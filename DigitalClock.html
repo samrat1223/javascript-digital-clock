@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>
+        Digital Clock
+    </title>
+</head>
+<body>
+    <div id="MyClockDisplay" class="clock"></div>
+        <script type="text/javascript">
+         function showTime()
+         {
+            var date = new Date();  // object created
+            var h=date.getHours();  // this method returns 0-23 as it os hour of a day
+            var m=date.getMinutes(); // this method returns 0-59
+            var s = date.getSeconds(); // this aslo returns 0-59
+            var session = "AM";
+
+            if(h==0)
+            {
+                h=12;
+            }
+            if(h>12)
+            {
+                h=h-12;
+                session ="PM";
+            }
+           
+            h=(h<10) ? "0" + h : h;
+            m=(m<10) ? "0" + m : m; 
+            s=(s<10) ? "0" + s : s;
+
+
+           var time = h+":"+m+":"+s+" "+session;
+           document.getElementById("MyClockDisplay").innerText = time ;
+           document.getElementById("MyClockDisplay").textContent = time ;
+
+             setTimeout(showTime,1000);
+
+         }
+         
+         showTime(); // It avoids extra 1s taking time to show the actual time
+    
+
+        </script>
+</body>
+</html>
